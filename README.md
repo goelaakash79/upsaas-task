@@ -14,6 +14,17 @@
 
 ### 👻 [Preview](https://upsaas.netlify.app)
 
+## Tech and tools used
+
+1. ReactJS
+2. ExpressJS
+3. NodeJS
+4. MongoDB
+5. TailwindCSS
+6. Netlify
+7. Heroku
+8. mLab
+
 ## Setup on a local machine
 
 Simply go to the command line and run these commands.
@@ -66,6 +77,10 @@ yarn run build
 netlify deploy --prod
 echo  "Latest development code deployed successfully!!"
 ```
+
+## Color Palette
+
+<img src="https://i.imgur.com/GBHb2mr.png"/>
 
 ## Author
 

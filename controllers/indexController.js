@@ -34,3 +34,25 @@ module.exports.getCompany = async (req, res) => {
 		});
 	}
 };
+
+module.exports.getCountries = async (req, res) => {
+	try {
+		const company = await Company.find({});
+		let temp = [];
+		temp = company.map(c => c.country);
+		let countrySet = new Set(temp);
+		let countries = Array.from(countrySet);
+		res.json({
+			message: "success",
+			data: countries,
+			error: false
+		});
+	} catch (err) {
+		console.log(err);
+		res.json({
+			message: err.message,
+			data: null,
+			error: true
+		});
+	}
+};

@@ -12,4 +12,5 @@ netlify deploy --prod
 echo "Latest development code deployed successfully!!"
 echo "Pushing to GitHub"
 git push origin master
-ENDSSH
+
+# ENDSSH

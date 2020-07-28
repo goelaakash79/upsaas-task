@@ -35,7 +35,7 @@ const Container = () => {
 		filterCompanies ? setTemp(filterCompanies) : setTemp(companies);
 	};
 
-	const handleFilter = ({ country, size = { min: 0, max: 5000 } }) => {
+	const handleFilter = ({ country, size = { min: 0, max: 10000 } }) => {
 		let filterCompanies;
 		if (country && size) {
 			filterCompanies = companies.filter(

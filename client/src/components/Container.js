@@ -13,6 +13,7 @@ const Container = () => {
 	const [companyInfo, setCompanyInfo] = useState({});
 	const [sheetHidden, setSheetHidden] = useState(true);
 	const [temp, setTemp] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		(async () => {
@@ -22,20 +23,25 @@ const Container = () => {
 				setTemp(res.data.companies);
 				res = await getCountriesService();
 				setCountries(res.data);
+				setLoading(false);
 			} catch (err) {
 				console.log(err);
+				setLoading(false);
 			}
 		})();
 	}, []);
 
 	const handleSearch = text => {
+		setLoading(true);
 		let filterCompanies = companies.filter(c =>
 			c.company.toLowerCase().includes(text)
 		);
-		filterCompanies ? setTemp(filterCompanies) : setTemp(companies);
+		filterCompanies.length > 0 ? setTemp(filterCompanies) : setTemp([]);
+		setLoading(false);
 	};
 
 	const handleFilter = ({ country, size = { min: 0, max: 10000 } }) => {
+		setLoading(true);
 		let filterCompanies;
 		if (country && size) {
 			filterCompanies = companies.filter(
@@ -52,6 +58,7 @@ const Container = () => {
 			);
 		}
 		setTemp(filterCompanies);
+		setLoading(false);
 	};
 
 	return (
@@ -70,6 +77,7 @@ const Container = () => {
 					</p>
 					<div className="flex flex-col md:flex-row gap-4">
 						<CompaniesList
+							loading={loading}
 							companies={temp}
 							onMore={info => {
 								setCompanyInfo(info);

@@ -23,7 +23,7 @@
 5. TailwindCSS
 6. Netlify
 7. Heroku
-8. mLab
+8. mLab/mongo atlas
 
 ## Setup on a local machine
 
